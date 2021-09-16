@@ -6,7 +6,7 @@ export default (req, res) => {
     const singleQuestion = questions.filter(question => question.id === idSelected)
 
     if(singleQuestion.length === 1) {
-        const questionSelected = singleQuestion[0]
+        const questionSelected = singleQuestion[0].scrambleAnswers()
         res.status(200).json(questionSelected.toObject())
     } else {
         res.status(204).send()
