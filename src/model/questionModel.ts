@@ -4,13 +4,13 @@ export default class QuestionModel {
     #id: number
     #utterance: string
     #answers: AnswerModel[]
-    #right: boolean
+    #gotRight: boolean
 
-    constructor(id: number, utterance: string, answers: AnswerModel[], right = false) {
-        this.#id
-        this.#utterance
-        this.#answers
-        this.#right
+    constructor(id: number, utterance: string, answers: AnswerModel[], gotRight = false) {
+        this.#id = id
+        this.#utterance = utterance
+        this.#answers = answers
+        this.#gotRight = gotRight;
     }
 
     get id() {
@@ -25,8 +25,8 @@ export default class QuestionModel {
         return this.#answers
     }
 
-    get right() {
-        return this.#right
+    get gotRight() {
+        return this.#gotRight
     }
 
     get answered() {
@@ -34,6 +34,15 @@ export default class QuestionModel {
             if(answer.revealed) return true
         }
         return false
+    }
+
+    toObject() {
+        return {
+            id: this.#id,
+            utterance: this.#utterance,
+            answers: this.#answers.map(resp => resp.toObject()),
+            right: this.#gotRight
+        }
     }
 
 }
