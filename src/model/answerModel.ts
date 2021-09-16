@@ -28,6 +28,10 @@ export default class AnswerModel {
     get revealed() {
         return this.#revealed
     }
+
+    reveal() {
+        return new AnswerModel(this.#value, this.#correct, true)
+    }
     
     toObject() {
         return {
