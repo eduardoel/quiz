@@ -31,12 +31,12 @@ export default function Answer(props: AnswerProps) {
                     <div className={styles.answerBack}>
                         {answer.correct ? (
                             <div className={styles.certain}>
-                                <div>the right answer is</div>
+                                <div>The right answer is...</div>
                                 <div className={styles.value}>{answer.value}</div>
                             </div>
                         ) : (
                             <div className={styles.wrong}>
-                                <div>the answer is wrong</div>
+                                <div>The answer is wrong...</div>
                                 <div className={styles.value}>{answer.value}</div>
                             </div>
                         )}

@@ -18,6 +18,12 @@ export default function Home() {
     setQuestion(question.replyWith(indice))
   }
 
+  function timerOver() {
+    if (question.answered) {
+      setQuestion(question.replyWith(-1))
+    }
+  }
+
   return (
     <div style={{
       display: 'flex',
@@ -25,7 +31,8 @@ export default function Home() {
       alignItems: 'center',
       height: '100vh',
     }}>
-      <Quiz value={question} onResponse={onResponse} />
+      <Quiz value={question} onResponse={onResponse} 
+        timerOver={timerOver}/>
     </div>
   )
 }
