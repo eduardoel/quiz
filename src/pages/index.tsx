@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Button from "../components/Button"
 import Quiz from "../components/Quiz"
 import AnswerModel from "../model/answerModel"
 import QuestionModel from "../model/questionModel"
@@ -27,6 +28,7 @@ export default function Home() {
   return (
     <div style={{
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
@@ -35,6 +37,7 @@ export default function Home() {
         responseTime={5}
         onResponse={onResponse} 
         timerOver={timerOver}/>
+      <Button text="Next" href="/result" />
     </div>
   )
 }
