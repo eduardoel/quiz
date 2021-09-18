@@ -31,7 +31,9 @@ export default function Home() {
       alignItems: 'center',
       height: '100vh',
     }}>
-      <Quiz value={question} onResponse={onResponse} 
+      <Quiz value={question} 
+        responseTime={5}
+        onResponse={onResponse} 
         timerOver={timerOver}/>
     </div>
   )

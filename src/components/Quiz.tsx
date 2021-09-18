@@ -12,6 +12,7 @@ const letters = [
 ]
 interface QuizProps {
     value: QuestionModel
+    responseTime?: number
     onResponse: (indice: number) => void
     timerOver: () => void
 }
@@ -37,7 +38,7 @@ export default function Quiz(props: QuizProps) {
     return(
         <div className={styles.quiz}>
             <Utterance text={question.utterance} />
-            <Timer duration={10} timerOver={props.timerOver} />
+            <Timer duration={props.responseTime ?? 10} timerOver={props.timerOver} />
             {renderAnswer()}
         </div>
     )
