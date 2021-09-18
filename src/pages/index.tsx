@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Button from "../components/Button"
+import Questionnaire from "../components/Questionnaire"
 import Quiz from "../components/Quiz"
 import AnswerModel from "../model/answerModel"
 import QuestionModel from "../model/questionModel"
@@ -15,14 +16,12 @@ export default function Home() {
 
   const [question, setQuestion] = useState(quizTuck)
 
-  function onResponse(indice: number) {
-    setQuestion(question.replyWith(indice))
+  function questionAnswered(question: QuestionModel) {
+
   }
 
-  function timerOver() {
-    if (question.answered) {
-      setQuestion(question.replyWith(-1))
-    }
+  function nextGo() {
+
   }
 
   return (
@@ -33,11 +32,12 @@ export default function Home() {
       alignItems: 'center',
       height: '100vh',
     }}>
-      <Quiz value={question} 
-        responseTime={5}
-        onResponse={onResponse} 
-        timerOver={timerOver}/>
-      <Button text="Next" href="/result" />
+      <Questionnaire
+        question={question}
+        last={true}
+        questionAnswered={questionAnswered}
+        nextGo={nextGo}
+      />
     </div>
   )
 }
