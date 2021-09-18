@@ -56,6 +56,11 @@ export default class QuestionModel {
         return new QuestionModel(this.#id, this.#utterance, scrambledAnswers, this.#gotRight)
     }
 
+    static createUsingObject(obj: QuestionModel): QuestionModel {
+        const answers = obj.answers.map(resp => AnswerModel.createUsingObject(resp))
+        return new QuestionModel(obj.id, obj.utterance, answers, obj.gotRight)
+    }
+
     toObject() {
         return {
             id: this.#id,

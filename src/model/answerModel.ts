@@ -32,6 +32,10 @@ export default class AnswerModel {
     reveal() {
         return new AnswerModel(this.#value, this.#correct, true)
     }
+
+    static createUsingObject(obj: AnswerModel): AnswerModel {
+        return new AnswerModel(obj.value, obj.correct, obj.revealed)
+    }
     
     toObject() {
         return {
