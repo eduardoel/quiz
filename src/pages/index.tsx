@@ -40,10 +40,8 @@ export default function Home() {
   }
 
   function idNextQuery() {
-    if(question) {
       const nextIndice = questionIds.indexOf(question.id) + 1
       return questionIds[nextIndice]
-    }
   }
 
   function nextGo() {
@@ -65,12 +63,12 @@ export default function Home() {
     })
   }
 
-  return (
+  return question ? (
       <Questionnaire
         question={question}
         last={idNextQuery() === undefined}
         questionAnswered={questionAnswered}
         nextGo={nextGo}
       />
-  )
+  ) : false
 }

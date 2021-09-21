@@ -2,7 +2,7 @@ import styles from '../styles/Quiz.module.css'
 import QuestionModel from "../model/questionModel";
 import Utterance from "./Utterance"
 import Answer from './Answer';
-import Timer from './timer';
+import Timer from './Timer';
 
 const letters = [
     {value: 'A', color: '#F2C866'},
@@ -24,7 +24,7 @@ export default function Quiz(props: QuizProps) {
         return question.answers.map((answer, i) => {
             return (
                 <Answer
-                    key={i}
+                    key={`${question.id}${i}`}
                     value={answer}
                     indice={i}
                     letter={letters[i].value}
@@ -38,7 +38,7 @@ export default function Quiz(props: QuizProps) {
     return(
         <div className={styles.quiz}>
             <Utterance text={question.utterance} />
-            <Timer duration={props.responseTime ?? 10} timerOver={props.timerOver} />
+            <Timer key={question.id} duration={props.responseTime ?? 10} timerOver={props.timerOver} />
             {renderAnswer()}
         </div>
     )
